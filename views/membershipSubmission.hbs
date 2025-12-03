@@ -1,0 +1,61 @@
+<main>
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8">
+
+                {{!-- card format --}}
+                <div class="card shadow">
+                    <div class="card-body p-4">
+
+                        <h2 class="text-center mb-4">Thank You!</h2>
+
+                        {{!-- green alert showing success --}}
+                        <div class="alert alert-success mb-4">
+                            Your message has been successfully submitted.
+                        </div>
+                        
+                        <div class="submission-details">
+                            <h4 class="mb-3">Submission Details:</h4>
+
+                            <div class="mb-3">
+                                <strong>First Name:</strong> 
+                                <span class="ms-2">{{formDetails.firstName}}</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>Last Name:</strong> 
+                                <span class="ms-2">{{formDetails.lastName}}</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>Email:</strong> 
+                                <span class="ms-2">{{formDetails.userEmail}}</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>Membership Type:</strong> 
+                                <p class="ms-2">{{formDetails.membershipType}}</p>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>Duration:</strong> 
+                                <p class="ms-2">{{formDetails.duration}}</p>
+                            </div>
+
+                            <div class="mb-3">
+                                <strong>Preferred Trainer:</strong> 
+                                <p class="ms-2">{{formDetails.preferredTrainer}}</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="/" class="btn btn-primary btn-lg">Return to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

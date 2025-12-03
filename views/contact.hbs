@@ -1,0 +1,71 @@
+<main>
+    {{!-- <div style="text-align: center">
+        <h3>Please fill out the form and we will contact you shortly:</h3>
+        <form action="https://foo.com" method="post">
+            <label for="first-name">First name:<span class="required">*</span></label>
+            <input type="text" name="first-name" id="first-name" placeholder="John" autofocus required><br>
+
+            <label for="last-name">Last name:<span class="required">*</span></label>
+            <input type="text" name="last-name" id="last-name" placeholder="Smith"><br>
+
+            <label for="email">Email:<span class="required">*</span></label>
+            <input type="email" name="email" id="email" required placeholder="johndoeATexample.com"><br>
+
+            <label for="message">Query : </label>
+            <textarea cols="40" rows="6" id="message" placeholder="Enter your message here."></textarea><br>
+
+            <input type="submit" name="submit" id="button" value="Submit">
+            <input type="reset" name="reset" id="reset">
+        </form>
+
+        <p style="margin-left: 138px;"> <span class="required">*</span> <em> indicates a required field.</em></p>
+    </div> --}}
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+
+            <div class="col-md-8">
+
+                <div class="card shadow">
+
+                    <div class="card-body p-4">
+
+                        <h3 class="text-center mb-4">Have any questions? Contact Us</h3>
+
+                        <form action="submission" method="GET">
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required placeholder="John">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" required placeholder="Smith">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="userEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="userEmail" name="userEmail" required placeholder="johndoe@example.com">
+                                <div class="form-text text-muted">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="messageBox" class="form-label">Message</label>
+                                <textarea class="form-control" id="messageBox" name="userMessage" rows="4" placeholder="Enter your message here"></textarea>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                <label class="form-check-label" for="exampleCheck1">I agree to be contacted</label>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg" >Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

@@ -1,0 +1,44 @@
+{{!-- <header class="backround_pic">
+     <img style="margin: 30px; width: 20%; height: auto; float: left;" src="images/logo2.png" alt="logo">
+     <h1> Sligo Fitness</h1>
+</header> --}}
+<!--<nav>
+     <ul>
+          <li><a id="{{#if state.home}}active{{/if}}" href='/'>Home</a></li>
+          <li><a id="{{#if state.programs}}active{{/if}}" href='programs'>Programs</a></li>
+          <li><a id="{{#if state.trainers}}active{{/if}}" href='trainers'>Trainers</a></li>
+          <li><a id="{{#if state.memberships}}active{{/if}}" href='memberships'>Membership</a></li>
+          <li><a id="{{#if state.contact}}active{{/if}}" href='contact'>Contact</a></li>
+     </ul>
+</nav>-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="/">
+      <img src="images/logo2.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Sligo Fitness
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link {{#if state.home}}active{{/if}}" aria-current="page" href="/">Home</a>
+        <a class="nav-link {{#if state.programs}}active{{/if}}" href="programs">Programs</a>
+        <a class="nav-link {{#if state.trainers}}active{{/if}}" href="trainers">Trainers</a>
+        <a class="nav-link {{#if state.memberships}}active{{/if}}" href="memberships">Membership</a>
+        <a class="nav-link {{#if state.products}}active{{/if}}" href="products">Products</a>
+        <a class="nav-link {{#if state.contact}}active{{/if}}" href="contact">Contact</a>
+      </div>
+    </div>
+
+  </div>
+  
+</nav>
+
+<section class="project_disclaimer">
+  <p>*THIS IS A COLLEGE PROJECT*</p>
+</section>

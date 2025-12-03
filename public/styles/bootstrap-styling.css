@@ -1,0 +1,33 @@
+
+.bg-body-tertiary {
+    background-color: red!important;
+}
+.navbar-brand{
+    color: white;
+}
+.nav-link {
+    color: white;
+    border-radius: 5px;
+}
+.navbar-nav .nav-link.active {
+    color: white
+}
+.active {
+    border: 2px solid whitesmoke;
+    color: white;
+}.list-group {
+    --bs-list-group-border-color: red;
+    --bs-list-group-action-color: red; 
+    --bs-list-group-action-hover-bg: red;
+    --bs-list-group-action-hover-color: white;
+}
+.btn-primary {
+    --bs-btn-bg: red;
+    --bs-btn-hover-bg: #cc0000;
+    --bs-btn-border-color: transparent;
+    --bs-btn-hover-border-color: #cc0000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.form-card{
+    background-color: #D3D3D3 ;
+}

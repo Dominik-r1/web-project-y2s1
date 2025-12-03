@@ -1,0 +1,310 @@
+body,
+html {
+    padding: 0%;
+    margin: 0%;
+    font-family: Verdana;
+}
+
+header {
+    padding: 0px;
+    margin: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+h1 {
+    margin: 0%;
+    flex-grow: 1;
+    text-align: center;
+    text-shadow:
+        0px 0px 5px red,
+        0px 0px 10px red,
+        0px 0px 15px red;
+}
+
+nav {
+    text-align: center;
+    background-color: red;
+    padding: 2px;
+}
+
+nav ul li {
+    display: inline;
+    list-style-type: none;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+ul li :hover {
+    background-color: white;
+    color: red;
+}
+
+#active {
+    border: 2px solid whitesmoke;
+}
+
+.project_disclaimer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    padding: 2px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.backround_pic {
+    background-image: url("../images/header.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 250px;
+}
+
+.join-now-button {
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+footer {
+    clear: both;
+    padding: 20px;
+    margin: 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    text-align: center;
+    color: white;
+}
+
+footer ul li {
+    display: inline;
+    list-style-type: none;
+}
+
+/* label {
+
+    width: 112px;
+    padding-right: 10px;
+    text-align: right;
+} */
+
+input {
+    margin-left: 1em;
+    margin-bottom: .5em;
+    width: 220px;
+}
+
+#button,
+#reset {
+    margin-top: .5em;
+    width: 8em;
+    background-color: red;
+    color: white;
+    border: solid 2px black;
+    border-radius: 5px;
+    height: 2em;
+}
+
+#button {
+    margin-left: 138px;
+}
+
+#reset {
+    margin-left: 52px;
+}
+
+
+.required {
+    font-weight: bold;
+    color: red;
+}
+
+aside {
+    width: 20%;
+    color: red;
+    float: right;
+    padding: 5px;
+}
+
+aside ol li {
+    border: 1px red solid;
+    padding: 5px;
+}
+
+ol li a {
+    text-decoration: none;
+    color: red;
+}
+
+aside ol li:hover {
+    background-color: red;
+    color: white;
+}
+
+aside ol li:hover a {
+    color: white;
+    /* changes text to white on hover*/
+}
+
+aside ol li:hover {
+    color: red;
+    /* Keeps the numbers red on hover */
+}
+
+.feel-supported-section {
+    
+    max-width: 80%;
+    /* display: flex;
+    flex-direction: column;
+    gap: 0em;
+    justify-content: center;
+    align-items: center; */
+}
+
+.location-section {
+    height: 300px;
+    padding: 10px;
+    clear: both;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: red;
+    color: white;
+}
+
+.our-trainers-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.learn-hyrox {
+    padding: 20px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; */
+    color: white;
+    background-color: red;
+    border-right: 5px red solid;
+}
+
+.spin-classes {
+    padding: 20px;
+    /* display: flex;
+    justify-content: center;
+    align-items: flex-start; */
+}
+
+.red-section {
+    color: white;
+    clear: both;
+    background-color: red;
+    column-count: 3;
+    column-rule: 1px solid black;
+    column-gap: 50px;
+    padding: 30px;
+    text-align: center;
+}
+
+.trainer-section {
+    color: red;
+    background-color: white;
+    column-count: 2;
+    column-rule: 1px solid black;
+    column-gap: 50px;
+    padding: 30px;
+    text-align: center;
+}
+
+.train-with-button-white {
+    text-decoration: none;
+    color: red;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.train-with-button-red {
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.train-with-button-red:hover {
+    border: solid black 2px;
+}
+
+.train-with-button-white:hover {
+    border: solid black 2px;
+}
+
+/* table {
+    width: 80%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: x-large;
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th,
+td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+thead th {
+    width: 25%;
+
+} */
+
+.colour_tab {
+    color: red;
+}
+
+
+/* Tablet */
+@media (max-width: 992px) {
+  body{
+    background-color: blue;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    body{
+        background-color: yellow;
+    }
+}
