@@ -31,3 +31,7 @@
 .form-card{
     background-color: #D3D3D3 ;
 }
+.navbar-toggler{
+    border: 1px solid white;
+    margin-bottom: 3px;
+}

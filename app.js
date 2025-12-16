@@ -48,17 +48,7 @@ app.get('/', (req, res) => {
   console.log('home')
 
 });
-// programs route
-app.get('/programs', (req, res) => {
-  state={programs : true}
-  head={
-    title:"Programs",
-    description:"This is the programs page, information about classes available in the gym",
-    keywords:"programs, spin class, hyrox, fitness, Sligo Fitness, build muscle",
-  }
-  res.render('programs', { state, head});
-  console.log('programs')
-});
+
 // trainers route
 app.get('/trainers', (req, res) => {
   state={trainers : true}

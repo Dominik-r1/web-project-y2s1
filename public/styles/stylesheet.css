@@ -136,36 +136,9 @@ input {
     color: red;
 }
 
-aside {
-    width: 20%;
-    color: red;
-    float: right;
-    padding: 5px;
-}
-
-aside ol li {
-    border: 1px red solid;
-    padding: 5px;
-}
-
 ol li a {
     text-decoration: none;
     color: red;
-}
-
-aside ol li:hover {
-    background-color: red;
-    color: white;
-}
-
-aside ol li:hover a {
-    color: white;
-    /* changes text to white on hover*/
-}
-
-aside ol li:hover {
-    color: red;
-    /* Keeps the numbers red on hover */
 }
 
 .feel-supported-section {
@@ -179,12 +152,7 @@ aside ol li:hover {
 }
 
 .location-section {
-    /* height: 300px; */
-    /* padding: 10px; */
     clear: both;
-    /* display: flex;
-    justify-content: space-evenly;
-    align-items: center; */
     background-color: red;
     color: white;
 }
@@ -210,9 +178,6 @@ aside ol li:hover {
 
 .spin-classes {
     padding: 20px;
-    /* display: flex;
-    justify-content: center;
-    align-items: flex-start; */
 }
 
 .red-section {
@@ -263,32 +228,6 @@ aside ol li:hover {
 .train-with-button-white:hover {
     border: solid black 2px;
 }
-
-/* table {
-    width: 80%;
-    border: 1px solid black;
-    border-collapse: collapse;
-    font-size: x-large;
-    text-align: center;
-    vertical-align: middle;
-    padding: 2px;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-th,
-td {
-    border: 1px solid black;
-    text-align: left;
-    padding: 8px;
-}
-
-thead th {
-    width: 25%;
-
-} */
 
 .colour_tab {
     color: red;
