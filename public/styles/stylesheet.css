@@ -48,6 +48,19 @@ ul li :hover {
     color: red;
 }
 
+.cart-icon{
+  display: flex;
+  align-items: center;     
+  justify-content: center;  
+  height: 100%;             
+  padding: 0 0.75rem;       
+  position: relative;
+  background: none;   
+  border: none;  
+  color: white;
+  border-radius: 5px;
+}
+
 #active {
     border: 2px solid whitesmoke;
 }

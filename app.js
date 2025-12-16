@@ -48,6 +48,39 @@ app.get('/', (req, res) => {
   console.log('home')
 
 });
+// login route
+app.get('/login', (req, res) => {
+  state={login : true}
+  head={
+    title:"Login",
+    description:"this is the login page",
+    keywords:"login"
+  }
+  res.render('login', { state, head});
+  console.log('login')
+});
+// userdetails route
+app.get('/userdetails', (req, res) => {
+  state={userdetails : true}
+  head={
+    title:"User Details",
+    description:"this is the user details page",
+    keywords:"userdetails"
+  }
+  res.render('userdetails', { state, head});
+  console.log('userdetails')
+});
+// cart route
+app.get('/cart', (req, res) => {
+  state={cart : true}
+  head={
+    title:"Cart",
+    description:"this is the cart",
+    keywords:"cart"
+  }
+  res.render('cart', { state, head});
+  console.log('cart')
+});
 
 // trainers route
 app.get('/trainers', (req, res) => {

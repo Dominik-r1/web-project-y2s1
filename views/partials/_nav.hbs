@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark bg-body-tertiary ">
-
+<nav class="navbar navbar-expand-md bg-body-tertiary">
   <div class="container-fluid">
 
     <a class="navbar-brand" href="/">
@@ -7,23 +6,48 @@
       Sligo Fitness
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      {{!-- <span class="navbar-toggler-icon"></span> --}}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <img src="images/burger-menu-icon.png" alt="Menu" width="30" height="30">
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link {{#if state.home}}active{{/if}}" aria-current="page" href="/">Home</a>
-        <a class="nav-link {{#if state.trainers}}active{{/if}}" href="trainers">Trainers</a>
-        <a class="nav-link {{#if state.memberships}}active{{/if}}" href="memberships">Membership</a>
-        <a class="nav-link {{#if state.products}}active{{/if}}" href="products">Products</a>
-        <a class="nav-link {{#if state.contact}}active{{/if}}" href="contact">Contact</a>
-      </div>
-    </div>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav w-100 gap-3 me-auto mb-2 mb-lg-0">
+        {{!-- Page links --}}
+        <li class="nav-item">
+          <a class="nav-link {{#if state.home}}active{{/if}}" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if state.trainers}}active{{/if}}" href="trainers">Trainers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if state.memberships}}active{{/if}}" href="memberships">Membership</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if state.products}}active{{/if}}" href="products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if state.contact}}active{{/if}}" href="contact">Contact</a>
+        </li>
+        {{!-- account dropdown link --}}
+        <li class="nav-item dropdown ms-0 ms-md-auto">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="login">Login</a></li>
+            <li><a class="dropdown-item" href="userdetails">User Details</a></li>
+          </ul>
+        </li>
+        {{!-- cart --}}
+        <li class="nav-item d-flex justify-content-center" >
+          <a class="cart-icon" href="cart">
+            <i class="bi bi-cart fs-3"></i>
+          </a>
+        </li>
 
+      </ul>
+    </div>
   </div>
-  
 </nav>
 
 <section class="project_disclaimer">

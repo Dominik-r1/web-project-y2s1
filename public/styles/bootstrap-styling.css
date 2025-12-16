@@ -15,7 +15,8 @@
 .active {
     border: 2px solid whitesmoke;
     color: white;
-}.list-group {
+}
+.list-group {
     --bs-list-group-border-color: red;
     --bs-list-group-action-color: red; 
     --bs-list-group-action-hover-bg: red;
