@@ -1,0 +1,28 @@
+
+
+document.getElementById('user-login').addEventListener('submit', (event) => {
+  // wait for submit button to be clicked on login form - 
+    // this code only invoked if login form submit button clicked
+
+    var email = document.getElementById('emailAddressID').value;
+    var password= document.getElementById('passwordID').value;
+    if (email=="wmitty@email.com" && password=="password1")  {   
+        // successful login, user redirected to shop.html
+        localStorage.setItem('loggedIn',1);  
+        
+        var prevPage = localStorage.getItem('redirectAfterLogin');
+        window.location.href = prevPage;  // redirect to page previous to login
+
+    }
+    else {
+        // alert("invalid login details");
+        // login unsuccessful, error message appears
+        localStorage.setItem('loggedIn',0);
+        var element = document.getElementById("errormessage");
+        element.classList.remove("d-none");
+        element.classList.remove("d-block");
+    }
+    event.preventDefault();
+  });
+
+

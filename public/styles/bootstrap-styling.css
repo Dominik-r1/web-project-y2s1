@@ -10,12 +10,16 @@
     border-radius: 5px;
 }
 .navbar-nav .nav-link.active {
-    color: white
+    color: white;
+}
+.navbar-nav .nav-link.active:hover {
+    color: black;
 }
 .active {
     border: 2px solid whitesmoke;
     color: white;
 }
+
 .list-group {
     --bs-list-group-border-color: red;
     --bs-list-group-action-color: red; 
@@ -35,4 +39,7 @@
 .navbar-toggler{
     border: 1px solid white;
     margin-bottom: 3px;
+}
+.dropdown-menu{
+    --bs-dropdown-link-active-bg: red;
 }
