@@ -59,6 +59,17 @@ app.get('/login', (req, res) => {
   res.render('login', { state, head});
   console.log('login')
 });
+// register route
+app.get('/register', (req, res) => {
+  state={register : true}
+  head={
+    title:"Register",
+    description:"this is the register page",
+    keywords:"register"
+  }
+  res.render('register', { state, head});
+  console.log('register')
+});
 // userdetails route
 app.get('/userdetails', (req, res) => {
   state={userdetails : true}
@@ -152,14 +163,14 @@ app.get('/membershipSubmission', (req, res) => {
     console.log('membershipSubmission')
 });
 
-// products route
-app.get('/products', (req, res) => {
-  state={products : true}
+// shop route
+app.get('/shop', (req, res) => {
+  state={shop : true}
   head={
-    title:"Products"
+    title:"Shop"
   }
-  res.render('products', { state, head});
-  console.log('products')
+  res.render('shop', { state, head});
+  console.log('shop')
 });
 
 

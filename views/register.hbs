@@ -1,0 +1,49 @@
+<main>
+    
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                
+                        <h2 class="text-center mb-4">Register:</h2>
+                    
+                        <form name="register" id="user-register" method="get">
+                            {{!-- firstName --}}
+                            <div class="form-group">
+                                <label for="firstNameID">First Name</label>
+                                <input type="text" class="form-control" id="firstNameID" name="firstNameID" value="Dom"  required>
+                            </div>
+                            {{!-- lastName --}}
+                            <div class="form-group">
+                                <label for="lastNameID">Last Name</label>
+                                <input type="text" class="form-control" id="lastNameID" name="lastNameID" value="Rev" required>
+                            </div>
+                            {{!-- Email --}}
+                            <div class="form-group">
+                                <label for="emailAddressID">Email address</label>
+                                <input type="email" class="form-control" id="emailAddressID" name="email" value="dominik@gmail.com" required>
+                            </div>
+                            {{!-- password --}}
+                            <div>
+                                <label for="passwordID">Password</label>
+                                <input type="password" class="form-control" id="passwordID" name="password" value="secret" required>
+                            </div>
+                            <div>
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="secret" required>
+                            </div>
+                            <div>
+                                <input type='submit' class="btn btn-primary" value="Register">
+                            </div>
+                        </form>
+                        <p><a href="login">Already have an account?</a></p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

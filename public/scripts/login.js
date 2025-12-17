@@ -4,13 +4,23 @@ document.getElementById('user-login').addEventListener('submit', (event) => {
   // wait for submit button to be clicked on login form - 
     // this code only invoked if login form submit button clicked
 
-    var email = document.getElementById('emailAddressID').value;
-    var password= document.getElementById('passwordID').value;
-    if (email=="wmitty@email.com" && password=="password1")  {   
-        // successful login, user redirected to shop.html
+    //form input
+    var inputEmail = document.getElementById('emailAddressID').value;
+    var inputPassword= document.getElementById('passwordID').value;
+
+    //get registered user
+    userDetails = JSON.parse(localStorage.getItem('userDetails'));
+    var email = userDetails.emailAddress
+    var password = userDetails.password
+
+
+    if (inputEmail== email && inputPassword == password)  {   
+        // successful login, user redirected to previous page
         localStorage.setItem('loggedIn',1);  
         
         var prevPage = localStorage.getItem('redirectAfterLogin');
+        //dont bring back to register
+        if( prevPage == "/register"){prevPage = '/'}
         window.location.href = prevPage;  // redirect to page previous to login
 
     }
