@@ -3,7 +3,7 @@
     <head>
         {{> _head}}
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         {{> _nav}}
         {{{body}}}
         {{> _footer}}
@@ -21,6 +21,7 @@
         <script src="scripts/cart.js" ></script>
         {{/if}}
         <script src="scripts/general.js"></script>
+        {{#if state.checkout}}<script src="scripts/checkout.js"></script>{{/if}}
 
     </body>
 </html>

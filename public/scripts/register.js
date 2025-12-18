@@ -1,3 +1,6 @@
+ 
+ var prevPage = localStorage.getItem('redirectAfterLogin');
+ localStorage.setItem('redirectAfterLogin',JSON.stringify(prevPage));
 
 document.getElementById('user-register').addEventListener('submit', (event) => { 
 
@@ -21,8 +24,7 @@ document.getElementById('user-register').addEventListener('submit', (event) => {
         //log user in
         localStorage.setItem('loggedIn',1);
 
-        var prevPage = localStorage.getItem('redirectAfterLogin');
-        window.location.href = '/';  // redirect to page previous to regsitration
+        window.location.href = prevPage || "/";  // redirect to page previous to regsitration
         event.preventDefault();
     }
     //registration failure

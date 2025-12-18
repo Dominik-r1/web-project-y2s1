@@ -1,7 +1,7 @@
 //variables
 const productsPath = '/data/products.json'
 //vars
-var cart = getCart();
+var cart = getCart(); // function in shop.js
 
 console.log('cart:', cart);
 
@@ -13,8 +13,19 @@ function updateEmptyCartMessage(){
     : message.classList.add('d-none');
 
 }
+function updateCartTotal() {
+  let total = 0;
+
+  cart.forEach(item => {
+    total += Number(item.qty) * Number(item.price);
+  });
+
+  document.getElementById("cartTotal").textContent =
+    `€${total.toFixed(2)}`;
+}
 
 updateEmptyCartMessage();
+updateCartTotal()
 renderCart();
 
 //////////////////////////////////////////////////
@@ -34,12 +45,12 @@ function renderCart(){
             <div id="cardid:${item.id}" class="card mb-3 w-100" style="min-width: 320px">
                 <div class="row g-0 align-items-center">
 
-                    <div class="col-4">
-                        <img src="${item.imageSmall}" class="img-fluid rounded-start" alt="Product image">
+                    <div class="col-2">
+                        <img src="${item.imageSmall}" class="img-fluid rounded-start" alt="Product image" style="max-width: 100%; max-height: 150px; object-fit: cover;">
                     </div>
 
         
-                     <div class="col-8">
+                     <div class="col-10">
                         <div class="card-body py-2">
                             <h6 class="card-title fw-bold mb-1">
                                 ${item.name} – ${item.size}
@@ -76,6 +87,47 @@ function renderCart(){
 
     });
 }
+//////////////////////////////////////////////////
+//EVEN LISTENERS FOR EMPTY CART 
+//////////////////////////////////////////////////
+const emptyCartBtn = document.getElementById("emptyCartBtn");
+
+emptyCartBtn.addEventListener("click", () => {
+
+  localStorage.setItem("cart", JSON.stringify([]));
+  localStorage.setItem("checkoutfigure", "0");
+
+  cart = [];
+  cartList.innerHTML = "";
+  updateEmptyCartMessage();
+  updateCartFigure();
+  updateCartTotal()
+});
+
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+checkoutBtn.addEventListener("click", () => {
+    event.preventDefault();
+
+    //check if logged in
+    var loggedin=localStorage.getItem('loggedIn'); 
+
+    // if user is logged in 
+    if (loggedin==1) {
+        //bring to user details page
+        window.location.href = "checkout";
+    } 
+    else {
+        //set redirect page to checkout page so that when logged in it will redirect there
+        localStorage.setItem('redirectAfterLogin', window.location.href = "checkout");
+
+        //redirect to log in
+        window.location.href = "login";
+    }   
+
+});
+
+
 //////////////////////////////////////////////////
 //EVEN LISTENERS FOR + - BUTTONS 
 //////////////////////////////////////////////////
@@ -150,7 +202,7 @@ cartList.addEventListener("click", (e) => {
     //update cart badge
     localStorage.setItem('checkoutfigure', JSON.stringify(qtyBadge));
     updateCartFigure() // function is in general.js
-
+    updateCartTotal();
     //update qty
     //update qty btn
     //update price

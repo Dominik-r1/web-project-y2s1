@@ -92,6 +92,17 @@ app.get('/cart', (req, res) => {
   res.render('cart', { state, head});
   console.log('cart')
 });
+// checkout route
+app.get('/checkout', (req, res) => {
+  state={checkout : true}
+  head={
+    title:"Checkout",
+    description:"this is the checkout",
+    keywords:"checkout"
+  }
+  res.render('checkout', { state, head});
+  console.log('checkout')
+});
 
 // trainers route
 app.get('/trainers', (req, res) => {

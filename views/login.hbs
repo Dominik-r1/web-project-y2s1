@@ -1,9 +1,9 @@
-<main>
+<main class="flex-grow-1">
     
     <div class="container py-5">
 
         <div class="alert alert-danger d-none" id="errormessage" role="alert">
-            Email or password incorrect
+            Email or password incorrect or account may not exist.
         </div>
 
         <div class="row justify-content-center">
@@ -19,11 +19,11 @@
                         <form name="login" id="user-login" method="get">
                             <div class="form-group">
                                 <label for="emailAddressID">Email address</label>
-                                <input type="email" class="form-control" id="emailAddressID" name="email" required>
+                                <input type="email" class="form-control" id="emailAddressID" value="dominik@gmail.com" name="email" required>
                             </div>
                             <div>
                                 <label for="passwordID">Password</label>
-                                <input type="password" class="form-control" id="passwordID" name="password" required>
+                                <input type="password" class="form-control" id="passwordID" value="secret" name="password" required>
                             </div>
                             <div>
                                 <input type='submit' class="btn btn-primary" value="Login">

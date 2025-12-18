@@ -1,4 +1,5 @@
-
+//where to go next: 
+var prevPage = localStorage.getItem('redirectAfterLogin');
 
 document.getElementById('user-login').addEventListener('submit', (event) => {
   // wait for submit button to be clicked on login form - 
@@ -9,9 +10,9 @@ document.getElementById('user-login').addEventListener('submit', (event) => {
     var inputPassword= document.getElementById('passwordID').value;
 
     //get registered user
-    userDetails = JSON.parse(localStorage.getItem('userDetails'));
-    var email = userDetails.emailAddress
-    var password = userDetails.password
+    userDetails = JSON.parse(localStorage.getItem('userDetails')) || "";
+    var email = userDetails.emailAddress 
+    var password = userDetails.password 
 
 
     if (inputEmail== email && inputPassword == password)  {   
@@ -19,8 +20,11 @@ document.getElementById('user-login').addEventListener('submit', (event) => {
         localStorage.setItem('loggedIn',1);  
         
         var prevPage = localStorage.getItem('redirectAfterLogin');
+        
         //dont bring back to register
-        if( prevPage == "/register" || "/login" ){prevPage = '/'}
+        if( prevPage == "/register" || prevPage == "/login" ){
+          prevPage = '/'}
+
         window.location.href = prevPage;  // redirect to page previous to login
 
     }

@@ -100,10 +100,10 @@ function renderProducts(){
                 : ""
                 }
                 
-                <h5 class="card-title">${product.name} - ${product.size}</h5>
-                <label>Flavour:</label>
-                <p class="card-text">${product.flavour}</p>
-                <p class="card-text">&euro;${product.price}</p>
+                <h5 class="card-title fw-semi-bold">${product.name} - ${product.size}</h5>
+                <p class="card-text fw-light">${product.brand}</p>
+                <p class="card-text fw-light">${product.flavour}</p>
+                <p class="card-text fw-bold">&euro;${product.price}</p>
                 <button id="${product.id}" class="btn btn-primary m-1 addtocart ${disabled} ">${btnText}</button>
             </div>
         </div>

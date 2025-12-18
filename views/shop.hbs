@@ -1,98 +1,101 @@
-<div class="container-fluid">
+<main>
+    <div class="container-fluid">
 
-    {{!-- <div class="row">
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        {{!-- <div class="row">
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                Button with data-bs-target
+            </button>
+        </div> --}}
+
+        {{!-- COLLAPSE FILTERS --}}
+        <button class="btn btn-primary m-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
             aria-expanded="false" aria-controls="collapseExample">
-            Button with data-bs-target
+            Filters
         </button>
-    </div> --}}
 
-    {{!-- COLLAPSE FILTERS --}}
-    <button class="btn btn-primary m-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-        aria-expanded="false" aria-controls="collapseExample">
-        Filters
-    </button>
+        {{!-- FILTERS --}}
+        <div class="collapse" id="collapseExample">
+            <div class="filters row align-items-center m-3 p-3">
+                {{!-- Category filter --}}
+                <div class="col">
+                    <label>
+                        Category:
+                        <select id="categoryFilter">
+                            <option value="all">All</option>
+                            <option value="protein">Proteins</option>
+                            <option value="recovery">Recovery</option>
+                            <option value="pre-workout">Pre-workouts</option>
+                            <option value="snacks">Snacks</option>
+                            <option value="accessories">Accessories</option>
+                        </select>
+                    </label>
+                </div>
 
-    {{!-- FILTERS --}}
-    <div class="collapse" id="collapseExample">
-        <div class="filters row align-items-center m-3 p-3">
-            {{!-- Category filter --}}
-            <div class="col">
-                <label>
-                    Category:
-                    <select id="categoryFilter">
-                        <option value="all">All</option>
-                        <option value="protein">Proteins</option>
-                        <option value="recovery">Recovery</option>
-                        <option value="pre-workout">Pre-workouts</option>
-                        <option value="snacks">Snacks</option>
-                        <option value="accessories">Accessories</option>
-                    </select>
-                </label>
+                {{!-- Favour filter --}}
+                <div class="col">
+                    <label>Flavour:
+                        <select id="flavourFilter">
+                            <option value="all">All</option>
+                        </select>
+                    </label>
+                </div>
+
+                {{!-- Size filter --}}
+                <div class="col">
+                    <label>Size:
+                        <select id="sizeFilter">
+                            <option value="all">All</option>
+                        </select>
+                    </label>
+                </div>
+
+                {{!-- Price filter --}}
+                <div class="col">
+
+                    <label>Price:
+                        <select id="priceFilter">
+                            <option value="all">All</option>
+                            <option value="<10">Under €10</option>
+                            <option value="10-25">€10 – €25</option>
+                            <option value=">25">€25+</option>
+                        </select>
+                    </label>
+                </div>
+
+                {{!-- InStock filter --}}
+                {{!-- MAKE CHECKBOX --}}
+                <div class="col">
+                    <label>In Stock:
+                        <select id="inStockFilter">
+                            <option value="all">All</option>
+                            <option value="inStock">In Stock</option>
+                        </select>
+                    </label>
+                </div>
+
+                <!-- Search box filter -->
+                <div class="col">
+                    <label>
+                        Search:
+                        <input id="searchInput" type="text" placeholder="Search product name" />
+                    </label>
+                </div>
+
             </div>
+        </div>
 
-            {{!-- Favour filter --}}
-            <div class="col">
-                <label>Flavour:
-                    <select id="flavourFilter">
-                        <option value="all">All</option>
-                    </select>
-                </label>
-            </div>
+        <p id="statusText">Data not loaded yet.</p>
+        <div id="outOfStockAlert" class="alert alert-danger d-none" role="alert">
+            Sorry, this item is currently out of stock!
+        </div>
 
-            {{!-- Size filter --}}
-            <div class="col">
-                <label>Size:
-                    <select id="sizeFilter">
-                        <option value="all">All</option>
-                    </select>
-                </label>
-            </div>
-
-            {{!-- Price filter --}}
-            <div class="col">
-
-                <label>Price:
-                    <select id="priceFilter">
-                        <option value="all">All</option>
-                        <option value="<10">Under €10</option>
-                        <option value="10-25">€10 – €25</option>
-                        <option value=">25">€25+</option>
-                    </select>
-                </label>
-            </div>
-
-            {{!-- InStock filter --}}
-            {{!-- MAKE CHECKBOX --}}
-            <div class="col">
-                <label>In Stock:
-                    <select id="inStockFilter">
-                        <option value="all">All</option>
-                        <option value="inStock">In Stock</option>
-                    </select>
-                </label>
-            </div>
-
-            <!-- Search box filter -->
-            <div class="col">
-                <label>
-                    Search:
-                    <input id="searchInput" type="text" placeholder="Search product name" />
-                </label>
-            </div>
+        {{!-- PRODUCTS LIST --}}
+        <div class="row  p-3 g-5 mx-3" id="productList">
+            {{!-- in here add cards inside col classes --}}
 
         </div>
-    </div>
-
-    <p id="statusText">Data not loaded yet.</p>
-    <div id="outOfStockAlert" class="alert alert-danger d-none" role="alert">
-        Sorry, this item is currently out of stock!
-    </div>
-
-    {{!-- PRODUCTS LIST --}}
-    <div class="row  p-3 g-5 mx-3" id="productList">
-        {{!-- in here add cards inside col classes --}}
 
     </div>
 
-</div>
+</main>

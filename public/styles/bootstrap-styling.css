@@ -31,6 +31,10 @@
     --bs-btn-hover-bg: #cc0000;
     --bs-btn-border-color: transparent;
     --bs-btn-hover-border-color: #cc0000;
+    --bs-btn-active-bg :white;
+    --bs-btn-active-color: #cc0000;
+    --bs-btn-active-border-color : #cc0000;
+    --bs-btn-disabled-bg: #cc0000;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 .form-card{
@@ -56,3 +60,4 @@
     --bs-btn-active-bg: red;
     --bs-btn-active-border-color: red;
 }
+
