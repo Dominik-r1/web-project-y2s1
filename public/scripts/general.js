@@ -1,25 +1,32 @@
-//General js file to update things
-// this is loaded with every page
 
-// set the checkout figure 
-// {iff non existant make one and set value to 0} (first ever time running this)
+//////////////////////////////////////////////////
+//General js file to update things
+//this script is ran with every page reload
+//////////////////////////////////////////////////
+
+
+// check the checkout figure 
+// {if non existant set value to 0} 
+//////////////////////////////////////////////////
+//figure beside cart icon
 if (localStorage.getItem('checkoutfigure') == null) {  
     localStorage.setItem('checkoutfigure',0);
 }
+//logged in status
 if (localStorage.getItem('loggedIn') == null) {  
     localStorage.setItem('loggedIn',0);
 }
-if (localStorage.getItem('cart') == null) {  
-    localStorage.setItem('cart',0);
-}
-
-//store num as js var
-var checkout=localStorage.getItem('checkoutfigure');
-//set element with id "checkout" to checkout value (js var made above)
-document.querySelector('#checkoutfigure').innerHTML=checkout;
 
 
-
+//TO UPDATE THE CART FIGURE IN HTML (if changed)
+function updateCartFigure() {
+    //get element
+    var checkout = localStorage.getItem('checkoutfigure');
+    //set element to above var 
+    document.getElementById('checkoutfigure').innerHTML = checkout;
+};
+//not an iffe bc its used later in other functions
+updateCartFigure()
 
 
 // run to update login/

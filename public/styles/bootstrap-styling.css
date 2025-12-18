@@ -43,3 +43,8 @@
 .dropdown-menu{
     --bs-dropdown-link-active-bg: red;
 }
+.btn.disabled{
+    background-color:#cc0000;
+    border-color: #cc0000;
+    text-decoration: line-through;
+}

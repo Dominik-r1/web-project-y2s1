@@ -5,6 +5,7 @@ var products;
 
 const statusText = document.getElementById("statusText");
 const productList = document.getElementById("productList");
+const message = document.getElementById('outOfStockAlert');
 
 //filter ids
 const categoryFilter = document.getElementById("categoryFilter");
@@ -70,7 +71,11 @@ function renderProducts(){
     filtered.forEach((product) => {
         //make card
         const div = document.createElement('div');
-        div.classList.add('col-12', 'col-sm-4', 'col-md-3', 'col-lg-2');
+        div.classList.add('col-12', 'col-sm-4', 'col-md-3', 'col-xxl-2');
+
+        //vars depend on instock bool
+        const disabled = product.inStock ? "" : "disabled";
+        const btnText = product.inStock ? "+ Add to Cart" : "Out of Stock";
 
         div.innerHTML = `
         <div class="card" >
@@ -84,25 +89,12 @@ function renderProducts(){
                 <label>Flavour:</label>
                 <p class="card-text">${product.flavour}</p>
                 <p class="card-text">&euro;${product.price}</p>
-                <a id="addtocart${product.id}" class="btn btn-primary m-1">+ Add to Cart</a>
+                <button id="${product.id}" class="btn btn-primary m-1 addtocart ${disabled}">${btnText}</button>
             </div>
         </div>
         `
 
         productList.appendChild(div);
-        //EVENT LISTENER FOR CARD
-        document.getElementById('addtocart' + product.id).addEventListener('click', () => {
-
-            var total = localStorage.getItem('checkoutfigure');
-            total++;
-            localStorage.setItem('checkoutfigure', total);
-            document.querySelector('#checkoutfigure').innerHTML = total;
-
-            var cart = localStorage.getItem('cart');
-            //localStorage.setItem('userDetails',JSON.stringify(userDetails));
-            
-
-        })
 
     });
     statusText.textContent = `Showing ${filtered.length} products`;
@@ -110,6 +102,10 @@ function renderProducts(){
         statusText.textContent = statusText.textContent + ", adjust filters";
     }
 
+}
+
+function disableOuOfStock (){
+    let 
 }
 
 
@@ -132,8 +128,28 @@ function renderProducts(){
     }
 })();
 
+//////////////////////////////////////////////////
+//EVENT LISTENERS FOR ADD_TO_CART (evenbt delagation)
+//////////////////////////////////////////////////
+productList.addEventListener("click", (e) => {
+    //clear out of stock message
+    message.classList.add('d-none');
 
+    //go to clicked element and find closest element with class "addtocart"
+    const btn = e.target.closest(".addtocart");
+    //if cant find - end function
+    if (!btn) return;  
+    // ( button ids are same as its product id )                       
+    const id = btn.id
+    //search for product with same id as btn clicked
+    products.forEach((product) => {
+        
+        if (product.id == id){
+            addToCart(product);
+        }
+    });
 
+})
 //////////////////////////////////////////////////
 //EVENT LISTENERS FOR FILTERS
 //////////////////////////////////////////////////
@@ -142,35 +158,35 @@ function renderProducts(){
 categoryFilter.addEventListener("change", () => {
     //update filter value
     category = categoryFilter.value;
-    RenderLaunches();  // re-filter and re-render
+    renderProducts();  // re-filter and re-render
 });
 // when user changes flavour filter
 flavourFilter.addEventListener("change", () => {
     //update filter value
     flavour = flavourFilter.value;
-    RenderLaunches();  // re-filter and re-render
+    renderProducts();  // re-filter and re-render
 });
 // when user changes size filter
 sizeFilter.addEventListener("change", () => {
     //update filter value
     size = sizeFilter.value;
-    RenderLaunches();  // re-filter and re-render
+    renderProducts();  // re-filter and re-render
 });
 // when user changes price filter
 priceFilter.addEventListener("change", () => {
     //update filter value
     price = priceFilter.value;
-    RenderLaunches();  // re-filter and re-render
+    renderProducts();  // re-filter and re-render
 });
 // when user changes inStock? filter
 inStockFilter.addEventListener("change", () => {
     //update filter value
     inStock = inStockFilter.value;
-    RenderLaunches();  // re-filter and re-render
+    renderProducts();  // re-filter and re-render
 });
 // when user types in the search box
 searchInput.addEventListener("input", () => {
     //update search variable
     searchTerm = searchInput.value.toLowerCase();
-    RenderLaunches();  // re-filter and re-render
+    renderProducts();  // re-filter and re-render
 });
