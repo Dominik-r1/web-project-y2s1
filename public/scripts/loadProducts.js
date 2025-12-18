@@ -74,50 +74,39 @@ function renderProducts(){
 
         div.innerHTML = `
         <div class="card" >
-        <img src="${product.imageSmall}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">${product.name}</h5>
-        <p class="card-text">Product Decripption</p>
-         <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+            <img src="${product.imageSmall}" class="card-img-top" alt="...">
+            <div class="card-body">
+                ${product.inStock
+                    ? `<span class="badge my-2 bg-success">In Stock</span>`
+                    : `<span class="badge my-2 bg-danger">Out of Stock</span>`
+                }
+                <h5 class="card-title">${product.name} - ${product.size}</h5>
+                <label>Flavour:</label>
+                <p class="card-text">${product.flavour}</p>
+                <p class="card-text">&euro;${product.price}</p>
+                <a id="addtocart${product.id}" class="btn btn-primary m-1">+ Add to Cart</a>
+            </div>
         </div>
         `
 
-        const productCard = document.createElement('div');
-        productCard.classList.add('card', 'p-3');
-
-        const cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
-
-
-        //--------create card elements
-        //image
-        const productImg = document.createElement('img');
-        productImg.src = product.imageSmall;
-
-        //name
-        const productName = document.createElement('h5');
-        productName.classList.add('card-title')
-        productName.textContent = product.name;
-    
-
-
-
-        //add elements to card and add card to page
-       
         productList.appendChild(div);
-        // div.appendChild(productCard);
-        // productCard.appendChild(cardBody);
-        // cardBody.appendChild(productName);
-        
+        //EVENT LISTENER FOR CARD
+        document.getElementById('addtocart' + product.id).addEventListener('click', () => {
 
+            var total = localStorage.getItem('checkoutfigure');
+            total++;
+            localStorage.setItem('checkoutfigure', total);
+            document.querySelector('#checkoutfigure').innerHTML = total;
 
+            var cart = localStorage.getItem('cart');
+            //localStorage.setItem('userDetails',JSON.stringify(userDetails));
+            
 
-
+        })
 
     });
     statusText.textContent = `Showing ${filtered.length} products`;
-    if (filtered.length == 0){
+    if (filtered.length == 0) {
         statusText.textContent = statusText.textContent + ", adjust filters";
     }
 
@@ -142,6 +131,8 @@ function renderProducts(){
         statusText.textContent = "Unable to fetch data at this time."
     }
 })();
+
+
 
 //////////////////////////////////////////////////
 //EVENT LISTENERS FOR FILTERS

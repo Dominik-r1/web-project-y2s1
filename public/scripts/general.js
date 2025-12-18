@@ -9,10 +9,16 @@ if (localStorage.getItem('checkoutfigure') == null) {
 if (localStorage.getItem('loggedIn') == null) {  
     localStorage.setItem('loggedIn',0);
 }
+if (localStorage.getItem('cart') == null) {  
+    localStorage.setItem('cart',0);
+}
+
 //store num as js var
 var checkout=localStorage.getItem('checkoutfigure');
 //set element with id "checkout" to checkout value (js var made above)
 document.querySelector('#checkoutfigure').innerHTML=checkout;
+
+
 
 
 
