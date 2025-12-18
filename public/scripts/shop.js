@@ -1,7 +1,9 @@
 
+
 //fetch cart object
 function getCart() {
   return JSON.parse(localStorage.getItem("cart") || "[]");
+  //returns array of items in cart
 }
 //set the cart
 function saveCart(cart) {
@@ -22,7 +24,10 @@ function addToCart(product) {
   }
   //else use array method .push to add item to the cart (array of objects)
    else {
-    cart.push({ id: product.id, name: product.name, qty: 1 });
+      cart.push({
+          id: product.id,
+          qty: 1
+      });
   }
 
   //update cart qty figure
@@ -30,8 +35,7 @@ function addToCart(product) {
   var qtyBadge = JSON.parse(localStorage.getItem("checkoutfigure"));
   qtyBadge++
   localStorage.setItem('checkoutfigure', JSON.stringify(qtyBadge));
-updateCartFigure()
-  
-
+  updateCartFigure()
+   
   saveCart(cart);
 }

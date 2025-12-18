@@ -11,7 +11,8 @@
     "category": "protein",
     "caloriesPerServing": 120,
     "price": 24.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": true
   },
   {
     "id": 2,

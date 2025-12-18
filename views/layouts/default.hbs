@@ -12,8 +12,13 @@
         {{#if state.login}}<script src="scripts/login.js"></script>{{/if}}
         {{#if state.userdetails}}<script src="scripts/userdetails.js"></script>{{/if}}
         {{#if state.register}}<script src="scripts/register.js"></script>{{/if}}
-        {{#if state.shop}}<script src="scripts/loadProducts.js" ></script>{{/if}}
-        {{#if state.shop}}<script src="scripts/shop.js" ></script>{{/if}}
+        {{#if state.shop}}
+        <script src="scripts/loadProducts.js" ></script>
+        <script src="scripts/shop.js" ></script>
+        {{/if}}
+        {{#if state.cart}}
+        <script src="scripts/cart.js" ></script>
+        {{/if}}
         <script src="scripts/general.js"></script>
 
     </body>

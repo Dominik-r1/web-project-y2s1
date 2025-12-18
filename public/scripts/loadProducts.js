@@ -23,20 +23,30 @@ let price = "all";
 let inStock = "all";
 let searchTerm = "";
 
-// FETCH DATA FROM JSON FILE
-//////////////////////////////////////////////////
-async function fetchJSON(path) {
-    //get data
-    let response = await fetch(path);
+//method is passed the file path, returns json format of the contents
+async function getProducts(productsPath) {
+    
+  try {
+    console.log("Fetching products...");
+    const response = await fetch(productsPath);
+    if (!response.ok) throw new Error("HTTP error: " + response.status);
 
-    //chekc for error
-    if (!response.ok) {
-        throw new Error("HTTP error: " + response.status);
-    }
+    const products = await response.json();
+    console.log(products);
+    return products;
 
-    //return data
-    return await response.json();
-};
+  } catch (err) {
+    console.error("Error fetching data:", err);
+    return [];
+  }
+}
+
+//IIFE to fetch products data and store inside "products" var, then start rendering
+(async () => {
+  products = await getProducts(productsPath);
+  renderProducts();
+})();
+
 
 // FILTER FUNCTION
 //////////////////////////////////////////////////
@@ -71,7 +81,7 @@ function renderProducts(){
     filtered.forEach((product) => {
         //make card
         const div = document.createElement('div');
-        div.classList.add('col-12', 'col-sm-4', 'col-md-3', 'col-xxl-2');
+        div.classList.add('col-12', 'col-sm-4', 'col-md-3', 'col-xxl-2', 'product-card');
 
         //vars depend on instock bool
         const disabled = product.inStock ? "" : "disabled";
@@ -82,14 +92,19 @@ function renderProducts(){
             <img src="${product.imageSmall}" class="card-img-top" alt="...">
             <div class="card-body">
                 ${product.inStock
-                    ? `<span class="badge my-2 bg-success">In Stock</span>`
-                    : `<span class="badge my-2 bg-danger">Out of Stock</span>`
+                    ? `<span class="badge my-2 me-2 bg-success">In Stock</span>`
+                    : `<span class="badge my-2 me-2 bg-danger">Out of Stock</span>`
                 }
+                ${product.bestseller
+                ? `<span class="badge my-2 bg-warning">Bestseller</span>`
+                : ""
+                }
+                
                 <h5 class="card-title">${product.name} - ${product.size}</h5>
                 <label>Flavour:</label>
                 <p class="card-text">${product.flavour}</p>
                 <p class="card-text">&euro;${product.price}</p>
-                <button id="${product.id}" class="btn btn-primary m-1 addtocart ${disabled}">${btnText}</button>
+                <button id="${product.id}" class="btn btn-primary m-1 addtocart ${disabled} ">${btnText}</button>
             </div>
         </div>
         `
@@ -109,31 +124,12 @@ function disableOuOfStock (){
 }
 
 
-//IIFE
-//////////////////////////////////////////////////
-(async function start() {
 
-    try {
-
-        console.log("Fetching products...");
-        products = await fetchJSON(productsPath);
-
-        console.log(products);
-
-        renderProducts();
-
-    } catch (err) {
-        console.error('Error fetching data:', err);
-        statusText.textContent = "Unable to fetch data at this time."
-    }
-})();
 
 //////////////////////////////////////////////////
 //EVENT LISTENERS FOR ADD_TO_CART (evenbt delagation)
 //////////////////////////////////////////////////
 productList.addEventListener("click", (e) => {
-    //clear out of stock message
-    message.classList.add('d-none');
 
     //go to clicked element and find closest element with class "addtocart"
     const btn = e.target.closest(".addtocart");
@@ -190,3 +186,41 @@ searchInput.addEventListener("input", () => {
     searchTerm = searchInput.value.toLowerCase();
     renderProducts();  // re-filter and re-render
 });
+
+
+//OLD CODE
+// //IIFE
+// //////////////////////////////////////////////////
+// (async function start() {
+
+//     try {
+
+//         console.log("Fetching products...");
+//         products = await fetchJSON(productsPath);
+
+//         console.log(products);
+//         console.log(products[0]);
+
+//         renderProducts();
+
+//     } catch (err) {
+//         console.error('Error fetching data:', err);
+//         statusText.textContent = "Unable to fetch data at this time."
+//     }
+// })();
+
+// // FETCH DATA FROM JSON FILE
+// //////////////////////////////////////////////////
+// async function fetchJSON(path) {
+//     //get data
+//     let response = await fetch(path);
+
+//     //chekc for error
+//     if (!response.ok) {
+//         throw new Error("HTTP error: " + response.status);
+//     }
+
+//     //return data
+//     return await response.json();
+// };
+// ////////////////////////////////////////////////////////////////////////////////////////////////////
