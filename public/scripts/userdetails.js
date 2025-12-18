@@ -26,8 +26,10 @@
     
 // }
 
+//get user detail suubject from local storage
 userDetails=JSON.parse(localStorage.getItem('userDetails'));
 
+    //input details into the form on page
     document.getElementById("firstNameID").setAttribute('value',userDetails.firstName);
     document.getElementById("lastNameID").setAttribute('value',userDetails.lastName);
     document.getElementById("emailAddressID").setAttribute('value',userDetails.emailAddress);

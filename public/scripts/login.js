@@ -20,7 +20,7 @@ document.getElementById('user-login').addEventListener('submit', (event) => {
         
         var prevPage = localStorage.getItem('redirectAfterLogin');
         //dont bring back to register
-        if( prevPage == "/register"){prevPage = '/'}
+        if( prevPage == "/register" || "/login" ){prevPage = '/'}
         window.location.href = prevPage;  // redirect to page previous to login
 
     }
