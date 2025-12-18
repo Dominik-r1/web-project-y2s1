@@ -48,3 +48,11 @@
     border-color: #cc0000;
     text-decoration: line-through;
 }
+.btn-outline-primary {
+    --bs-btn-color: red;
+    --bs-btn-border-color: red;
+    --bs-btn-hover-bg: red;
+    --bs-btn-hover-border-color: red;
+    --bs-btn-active-bg: red;
+    --bs-btn-active-border-color: red;
+}

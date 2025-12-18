@@ -26,7 +26,18 @@ function addToCart(product) {
    else {
       cart.push({
           id: product.id,
-          qty: 1
+          name: product.name,
+          brand: product.brand,
+          description: product.description,
+          imageSmall: product.imageSmall,
+          size: product.size,
+          flavour: product.flavour,
+          caloriesPerServing: product.caloriesPerServing,
+          price: product.price,
+          inStock: product.inStock,
+          bestseller: product.bestseller,
+          qty: 1,
+
       });
   }
 

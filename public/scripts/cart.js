@@ -1,101 +1,169 @@
 //variables
 const productsPath = '/data/products.json'
 //vars
+var cart = getCart();
+
+console.log('cart:', cart);
+
 const message = document.getElementById('emptyMessage');
 
-//all products , 
-var products = [];
-var items =[];
+function updateEmptyCartMessage(){
+    cart.length == 0
+    ? message.classList.remove('d-none')
+    : message.classList.add('d-none');
 
-//fetch all products
-//method is passed the file path, returns json format of the contents
-async function getProducts(productsPath) {
-    
-  try {
-    console.log("Fetching products...");
-    const response = await fetch(productsPath);
-    if (!response.ok) throw new Error("HTTP error: " + response.status);
-
-    const products = await response.json();
-    console.log(products);
-    return products;
-
-  } catch (err) {
-    console.error("Error fetching data:", err);
-    return [];
-  }
 }
-//IIFE to fetch all product info and start rendering
-(async () => {
-  products = await getProducts(productsPath);
-  console.log("products info: " + products)
-  renderCart();
-})();
 
-items.length == 0
-  ? message.classList.remove('d-none')
-  : message.classList.add('d-none');
+updateEmptyCartMessage();
+renderCart();
 
+//////////////////////////////////////////////////
+//RENDER CART
+//////////////////////////////////////////////////
 
 function renderCart(){
     cartList.innerHTML = ""; //clear output
 
     // -------------- RENDER LOOP --------------
-    items.forEach((item) => {
+    cart.forEach((item) => {
         //make card
         const div = document.createElement('div');
-        div.classList.add('col-12', 'product-card');
-
-        //vars depend on instock bool
-        const disabled = item.inStock ? "" : "disabled";
-        const btnText = item.inStock ? "+ Add to Cart" : "Out of Stock";
+        div.classList.add('col-12', 'product-card', 'm-0');
 
         div.innerHTML = `
-        <div class="card" >
-            <img src="${item.imageSmall}" class="card-img-top" alt="...">
-            <div class="card-body">
-                ${item.inStock
-                    ? `<span class="badge my-2 me-2 bg-success">In Stock</span>`
-                    : `<span class="badge my-2 me-2 bg-danger">Out of Stock</span>`
-                }
-                ${item.bestseller
-                ? `<span class="badge my-2 bg-warning">Bestseller</span>`
-                : ""
-                }
-                
-                <h5 class="card-title">${item.name} - ${item.size}</h5>
-                <label>Flavour:</label>
-                <p class="card-text">${item.flavour}</p>
-                <p class="card-text">&euro;${item.price}</p>
-                <button id="${item.id}" class="btn btn-primary m-1 addtocart ${disabled} ">${btnText}</button>
-            </div>
-        </div>
+            <div id="cardid:${item.id}" class="card mb-3 w-100" style="min-width: 320px">
+                <div class="row g-0 align-items-center">
 
-        < div class="card mb-3" style = "max-width: 540px;" >
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        img src="${item.imageSmall}" class="card-img-top" alt="...">
+                    <div class="col-4">
+                        <img src="${item.imageSmall}" class="img-fluid rounded-start" alt="Product image">
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-        </div >
+
         
-        `
+                     <div class="col-8">
+                        <div class="card-body py-2">
+                            <h6 class="card-title fw-bold mb-1">
+                                ${item.name} – ${item.size}
+                                ${item.inStock
+                                ? `<span class="badge ms-2 bg-success">In Stock</span>`
+                                : `<span class="badge ms-2 bg-danger">Out of Stock</span>`
+                                }
+                            </h6>
 
+                
+                            <p class="card-text mb-1 text-muted">${item.flavour}</p>
+                            <p class="card-text mb-1 text-muted">${item.brand}</p>
+                            <p class="card-text mb-2 small">${item.description}</p>
+                
+                            <div class="d-flex flex-wrap align-items-center justify-content-end gap-3">
+
+                                <span id="qtyid:${item.id}" class="small">Qty: ${item.qty}</span>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button id="${item.id}" type="button" class="qty-minus btn btn-outline-primary">−</button>
+                                    <button id="qtybtnid:${item.id}" type="button" class="btn btn-outline-primary">${item.qty}</button>
+                                    <button id="${item.id}" type="button" class="qty-plus btn btn-outline-primary">+</button>
+                                </div>
+                                <span id="priceid:${item.id}" class="fw-semibold">€${(item.price * item.qty).toFixed(2)}</span>
+                            </div>
+
+                        </div>
+                     </div>
+
+                    </div>
+                </div>`
+        
+        
         cartList.appendChild(div);
 
     });
-    // statusText.textContent = `Showing ${filtered.length} products`;
-    // if (filtered.length == 0) {
-    //     statusText.textContent = statusText.textContent + ", adjust filters";
-    // }
-
 }
+//////////////////////////////////////////////////
+//EVEN LISTENERS FOR + - BUTTONS 
+//////////////////////////////////////////////////
+cartList.addEventListener("click", (e) => {
+
+    //e.target is element clicked - go to element that was clicked,
+    //if class not there, move to parent elements  and try look for any parent element with that class
+    const minusBtn = e.target.closest(".qty-minus");
+    const plusBtn = e.target.closest(".qty-plus");
+
+    console.log("Button found:", e.target.closest(".qty-minus") || e.target.closest(".qty-plus"))
+
+    //if cant find either - end function
+    if (!minusBtn && !plusBtn) return;
+
+    // ( button ids are same as its product id )  
+    //so id of product were changing = minus btn id OR plus btn id    (whichever was found at click) 
+    //so item id to edit:
+    var id ;
+
+    if (!minusBtn){
+        id = plusBtn.id;
+    }            
+    else{
+        id = minusBtn.id;
+    }   
+    //find item being affected in cart
+    //converted to sting for comparison
+    const item = cart.find((item) => String(item.id) === String(id));
+
+    //if not found in cart end function
+    if (!item) return;
+
+    // if found and it was a plus btn that was clicked
+    if (plusBtn) {
+        console.log("Plus item", item.id)
+        
+        //set item qty to itself plus 1 (converted to number so can be added, since its stored as a string)
+        item.qty = (Number(item.qty) || 1) + 1;
+    }
+    else if (minusBtn) {
+        item.qty = (Number(item.qty) || 1) -1;
+
+        //remove card if qty falls below 1
+        if (item.qty < 1){
+            // remove from cart array
+            //filter out items from cart where item id is same as item id were removing + update local storage
+            cart = cart.filter(p => String(p.id) !== String(item.id));
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            // remove card from DOM
+            //get element with id
+            const cardToRemove = document.getElementById(`cardid:${item.id}`);
+            //if found, remove
+            if (cardToRemove) cardToRemove.remove();
+
+            //makde visible
+            updateEmptyCartMessage();
+        }
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    
+
+    var qtyBadge = JSON.parse(localStorage.getItem("checkoutfigure"));
+    if(plusBtn){
+        qtyBadge++
+    }else {
+        qtyBadge--
+    }
 
 
+    //update cart badge
+    localStorage.setItem('checkoutfigure', JSON.stringify(qtyBadge));
+    updateCartFigure() // function is in general.js
+
+    //update qty
+    //update qty btn
+    //update price
+    //update cart badge
+    //get each element that needs updating fro document by id (ids are uniquie as they containt the product id)
+    var qtyBadge = JSON.parse(localStorage.getItem("checkoutfigure"));
+    var qtySpan =  document.getElementById(`qtyid:${item.id}`)
+    var qtyBtn =  document.getElementById(`qtybtnid:${item.id}`)
+    var priceSpan =  document.getElementById(`priceid:${item.id}`)
+
+    //if found edit textcontent as needed
+    if (qtySpan) {qtySpan.textContent = `Qty: ${item.qty}`;}
+    if (qtyBtn) {qtyBtn.textContent  = String(item.qty); }
+    if (priceSpan) {priceSpan.textContent   = `€${(Number(item.price) * Number(item.qty)).toFixed(2)}`;}
+
+})
