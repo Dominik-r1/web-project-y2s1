@@ -1,35 +1,41 @@
+//try get user details object
+var userDetails = JSON.parse(localStorage.getItem('userDetails'));
 
 
- 
-// if (localStorage.getItem('userDetails') === null) {  
+//if user details obj exists
+if (userDetails) { 
 
-//     // if userdetails is null, that means it has not been loaded before. we not initialise userdetails object
-//     var userDetails = {firstName:"Walter", lastName:"Mitty", dob:"1990-12-01",address1:"Buenos Ayres Drive", address2:"Strandhill", address3:"Co. Sligo"};
-    
-//     // now we store the userdetails object as a localstorage object but localstore only stores text and userdetails is a javascript object
-//     // we convert a javascript object ot a string using JSON.stringify - we are being expedient!
-//     document.getElementById("firstNameID").setAttribute('value',userDetails.firstName);
-//     document.getElementById("lastNameID").setAttribute('value',userDetails.lastName);
-//       localStorage.setItem('userdetails',JSON.stringify(userDetails));
-//   document.getElementById("dobID").setAttribute('value',userDetails.dob);
-//     document.getElementById("address1ID").setAttribute('value',userDetails.address1);       
-//     document.getElementById("address2ID").setAttribute('value',userDetails.address2);
-//     document.getElementById("address3ID").setAttribute('value',userDetails.address3);
-// } else {
-//     // if localstorage variable userdetails is already created - load it to javascript oject. 
-//     // JSON.parse turns it back into an javascript object
-//     userDetails=JSON.parse(localStorage.getItem('userDetails'));
+    //get user details from local storage
+    userDetails=JSON.parse(localStorage.getItem('userDetails'));  
 
-//     document.getElementById("firstNameID").setAttribute('value',userDetails.firstName);
-//     document.getElementById("lastNameID").setAttribute('value',userDetails.lastName);
-//     document.getElementById("emailAddressID").setAttribute('value',userDetails.emailAddress);
-    
-// }
+    ///if it exists , fill them into the form
+    if(userDetails.firstName) document.getElementById("firstNameID").setAttribute('value',userDetails.firstName);
+    if(userDetails.lastName) document.getElementById("lastNameID").setAttribute('value',userDetails.lastName);
+    if(userDetails.emailAddress) document.getElementById("emailAddressID").setAttribute('value',userDetails.emailAddress); 
+    if(userDetails.address1) document.getElementById("address1").setAttribute('value',userDetails.address1); 
+    if(userDetails.address2) document.getElementById("address2").setAttribute('value',userDetails.address2); 
+    if(userDetails.city) document.getElementById("city").setAttribute('value',userDetails.city);    
+    if(userDetails.eircode) document.getElementById("eircode").setAttribute('value',userDetails.eircode);  
 
-//get user detail suubject from local storage
-userDetails=JSON.parse(localStorage.getItem('userDetails'));
+};
 
-    //input details into the form on page
-    document.getElementById("firstNameID").setAttribute('value',userDetails.firstName);
-    document.getElementById("lastNameID").setAttribute('value',userDetails.lastName);
-    document.getElementById("emailAddressID").setAttribute('value',userDetails.emailAddress);
+// on detail update click
+document.getElementById('udetails').addEventListener('submit', (event) => {
+
+    // if the user updates the user details - make a new details object and assign values
+    var userDetails={};
+    userDetails.firstName = document.getElementById('firstNameID').value;
+    userDetails.lastName = document.getElementById('lastNameID').value;
+    userDetails.emailAddress = document.getElementById('emailAddressID').value;
+    userDetails.address1 = document.getElementById('address1').value;   
+    userDetails.address2 = document.getElementById('address2').value;
+    userDetails.city = document.getElementById('city').value; 
+    userDetails.eircode = document.getElementById('eircode').value; 
+
+  
+    // convert the object to a string with JSON.stringify and rewrite it to localstorage
+    localStorage.setItem('userDetails',JSON.stringify(userDetails));
+
+    event.preventDefault();
+
+})

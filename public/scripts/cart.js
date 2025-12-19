@@ -1,14 +1,14 @@
 //variables
 const productsPath = '/data/products.json'
 //vars
-var cart = getCart(); // function in shop.js
+var cart = getCart() || []; // function in shop.js
 
 console.log('cart:', cart);
 
 const message = document.getElementById('emptyMessage');
 
 function updateEmptyCartMessage(){
-    cart.length == 0
+    cart.length == 0 || null
     ? message.classList.remove('d-none')
     : message.classList.add('d-none');
 

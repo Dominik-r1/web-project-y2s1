@@ -23,7 +23,7 @@ document.getElementById('user-login').addEventListener('submit', (event) => {
         
         //dont bring back to register
         if( prevPage == "/register" || prevPage == "/login" ){
-          prevPage = '/'}
+          prevPage = "/"}
 
         window.location.href = prevPage;  // redirect to page previous to login
 

@@ -49,7 +49,7 @@ document.getElementById('loginlogout').addEventListener('click', (event) => {
         //save current(redirect) page
         localStorage.setItem('redirectAfterLogin', window.location.pathname);
 
-        window.location.href = "login" || "/";
+        window.location.href = "login";
     }   
 })
 

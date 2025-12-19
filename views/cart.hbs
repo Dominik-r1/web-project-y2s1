@@ -2,15 +2,18 @@
 
     <div class="container-fluid">
 
+        {{!-- TITLE ROW --}}
         <div class="row mb-4 align-items-center">
             <div class="col d-flex justify-content-between align-items-center">
                 <h2 class="m-4 colour_tab mb-0">Your Shopping Cart</h2>
-                <button id="emptyCartBtn" class="btn btn-outline-secondary m-4">Empty Cart</button>
+                <button id="emptyCartBtn" class="btn btn-outline-danger m-4">Empty Cart</button>
             </div>
         </div>
 
+        {{!--DIVIDER --}}
         <hr class="border border-danger border-3 m-5 opacity-100">
 
+        {{!--MESSAGE IF CART EMPTY --}}
         <div id="emptyMessage" class="row justify-content-center">
             {{!-- if cart empty --}}
             <div class="col-12 text-center">
@@ -19,10 +22,13 @@
             </div>
         </div>
 
+         {{!--CART CONTENTS --}}
         <div id="cartList" class="row  p-3 g-5 mx-sm-3"></div>
 
+        {{!--DIVIDER --}}
         <hr class="border border-danger border-3 m-5 opacity-100">
 
+        {{!-- TOTAL --}}
         <div id="totalDiv" class="row mt-3">
             <div class="col px-5 d-flex justify-content-end">
                 <h5 class="fw-bold m-4">
@@ -31,9 +37,10 @@
             </div>
         </div>
 
+        {{!-- CHECKOUT BTN --}}
         <div class="row mb-4">
             <div class="col d-flex justify-content-center">
-                <button id="checkoutBtn" class="btn btn-primary btn-lg px-5 w-75 ">
+                <button id="checkoutBtn" class="btn btn-success btn-lg px-5 w-75 ">
                     Proceed to Checkout
                 </button>
             </div>
