@@ -103,6 +103,17 @@ app.get('/checkout', (req, res) => {
   res.render('checkout', { state, head});
   console.log('checkout')
 });
+// purchaseConfirmation route
+app.get('/purchaseConfirmation', (req, res) => {
+  state={purchaseConfirmation : true}
+  head={
+    title:"Order Placed!",
+    description:"this is the purchase Confirmation",
+    keywords:"purchaseConfirmation"
+  }
+  res.render('purchaseConfirmation', { state, head});
+  console.log('checkpurchaseConfirmationout')
+});
 
 // trainers route
 app.get('/trainers', (req, res) => {

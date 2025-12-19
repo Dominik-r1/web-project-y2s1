@@ -1,0 +1,85 @@
+<main class="flex-grow-1">
+  <div class="container-fluid">
+
+    {{!-- TITLE ROW --}}
+    <div class="row mb-2 align-items-center">
+      <div class="col d-flex justify-content-between align-items-center">
+        <h2 class="m-4 colour_tab mb-0">Order Confirmed</h2>
+        <a href="shop" class="btn btn-outline-danger me-4">Continue Shopping</a>
+      </div>
+    </div>
+
+    {{!-- DIVIDER --}}
+    <hr class="border border-danger border-3 mx-5 opacity-100">
+
+    {{!-- CONTENT --}}
+    <div class="row justify-content-center px-3 px-md-5 g-4 mb-4">
+
+      {{!-- LEFT / MAIN CARD --}}
+      <div class="col-12 col-md-10 col-lg-7">
+        <div class="card p-3 p-md-4">
+          <h4 class="fw-bold mb-2">Thanks! Your order has been placed ✅</h4>
+          <p class="text-muted mb-3">
+            You’ll receive a confirmation email shortly.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <div class="border rounded p-3 h-100">
+                <div class="text-muted small">Order Number</div>
+                <div id="orderNumber" class="fw-semibold">—</div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <div class="border rounded p-3 h-100">
+                <div class="text-muted small">Estimated Delivery</div>
+                <div id="deliveryEstimate" class="fw-semibold">—</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="border rounded p-3">
+                <div class="text-muted small mb-1">Delivery Address</div>
+                <div id="deliveryAddress" class="fw-semibold">—</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-4 gap-2 flex-wrap">
+            <a href="/shop" class="btn btn-primary px-4">Shop More</a>
+            <a href="/cart" class="btn btn-outline-secondary px-4">Back to Cart</a>
+          </div>
+        </div>
+      </div>
+
+      {{!-- RIGHT / ORDER SUMMARY CARD --}}
+      <div class="col-12 col-md-10 col-lg-5">
+        <div class="card p-3 p-md-4">
+          <h5 class="fw-bold mb-3">Order Summary</h5>
+
+          <div id="summaryItems" class="mb-3">
+            {{!-- JS fills this --}}
+          </div>
+
+          <hr>
+
+          <div class="d-flex justify-content-between">
+            <span class="text-muted">Subtotal</span>
+            <span id="subtotalText">€0.00</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="text-muted">Shipping</span>
+            <span id="shippingText">€0.00</span>
+          </div>
+          <div class="d-flex justify-content-between fw-bold mt-2">
+            <span>Total</span>
+            <span id="totalText">€0.00</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>

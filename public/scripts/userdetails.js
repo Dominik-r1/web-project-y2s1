@@ -38,4 +38,4 @@ document.getElementById('udetails').addEventListener('submit', (event) => {
 
     event.preventDefault();
 
-})
+});

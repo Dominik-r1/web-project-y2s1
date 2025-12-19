@@ -9,6 +9,7 @@
         {{> _footer}}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+        {{#if state.home}}<script src="scripts/home.js"></script>{{/if}}
         {{#if state.login}}<script src="scripts/login.js"></script>{{/if}}
         {{#if state.userdetails}}<script src="scripts/userdetails.js"></script>{{/if}}
         {{#if state.register}}<script src="scripts/register.js"></script>{{/if}}
@@ -20,8 +21,9 @@
         <script src="scripts/shop.js" ></script>
         <script src="scripts/cart.js" ></script>
         {{/if}}
-        <script src="scripts/general.js"></script>
         {{#if state.checkout}}<script src="scripts/checkout.js"></script>{{/if}}
-
+        {{#if state.purchaseConfirmation}}<script src="scripts/orderConfirmation.js"></script>{{/if}}
+        <script src="scripts/general.js"></script>
+        
     </body>
 </html>

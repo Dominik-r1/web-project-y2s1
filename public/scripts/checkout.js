@@ -18,21 +18,21 @@ let cart = getCart();
 
 //fill in cart items
 function renderSummary() {
-    orderItems.innerHTML = "";
+  orderItems.innerHTML = "";
 
-    let subtotal = 0;
+  let subtotal = 0;
 
-    cart.forEach((item) => {
+  cart.forEach((item) => {
 
-        const qty = item.qty;
-        const price = item.price;
-        const lineTotal = Number(qty) * Number(price);
-        subtotal += lineTotal;
+    const qty = item.qty;
+    const price = item.price;
+    const lineTotal = Number(qty) * Number(price);
+    subtotal += lineTotal;
 
-        const row = document.createElement("div");
-        row.className = "d-flex justify-content-between align-items-start mb-2";
+    const row = document.createElement("div");
+    row.className = "d-flex justify-content-between align-items-start mb-2";
 
-        row.innerHTML = `
+    row.innerHTML = `
         <div class="me-3">
         <div class="fw-semibold">${item.name} - ${item.size}</div>
 
@@ -43,14 +43,14 @@ function renderSummary() {
         <div class="text-end fw-semibold">€${lineTotal.toFixed(2)}</div>
         `
 
-        orderItems.appendChild(row);
-    });
+    orderItems.appendChild(row);
+  });
 
     // free shipping on order above 50
     const shipping = 
     subtotal > 50 
-    ? 4.99 
-    : 0;
+    ? 0 
+    : 4.99;
     const total = subtotal + shipping;
 
     //append to html
@@ -80,7 +80,7 @@ if (userDetails.eircode) document.getElementById("eircode").setAttribute('value'
 checkoutForm?.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Use browser validation (required fields etc.)
+  // start browser validation manually since default was prevented
   if (!checkoutForm.checkValidity()) {
     checkoutForm.reportValidity();
     return;
@@ -89,14 +89,31 @@ checkoutForm?.addEventListener("submit", (e) => {
   if (cart.length === 0) return;
 
   //IF SUCCESSFUL 
-  
-  // Clear cart + badge
-  cart = [];
-  localStorage.setItem("cart", JSON.stringify([]));
-  localStorage.setItem("checkoutfigure", "0");
 
-  renderSummary();
+  //Save billing details 
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const emailAddress = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const address1 = document.getElementById("address1").value;
+  const address2 = document.getElementById("address2").value;
+  const country = document.getElementById("country").value;
+  const county = document.getElementById("county").value;
+  const city = document.getElementById("city").value;
+  const eircode = document.getElementById("eircode").value;
+  //create user object 
+  const billingDetails = { firstName, lastName, emailAddress, phone, address1, address2, country, county, city, eircode };
+
+  //save to local storage
+  localStorage.setItem('billingDetails', JSON.stringify(billingDetails));
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  
+  //clear cart badge value for next page
+  localStorage.setItem("checkoutfigure", "0");
+  // renderSummary();
 
   // redirect to confirmation screen
-  window.location.href = '/'
+  window.location.href = 'purchaseConfirmation'
 });

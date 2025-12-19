@@ -1,8 +1,6 @@
 //variables
 const productsPath = '/data/products.json'
-//var to store product info
 var products;
-
 const statusText = document.getElementById("statusText");
 const productList = document.getElementById("productList");
 const message = document.getElementById('outOfStockAlert');
@@ -15,7 +13,7 @@ const priceFilter = document.getElementById("priceFilter")
 const inStockFilter = document.getElementById("inStockFilter")
 const searchInput = document.getElementById("searchInput");
 
-//set detault filter values
+//set detault filter values (these are updated if the above ids change by even listeners at bottom)
 let category = "all";
 let flavour = "all";
 let size = "all"
@@ -23,9 +21,8 @@ let price = "all";
 let inStock = "all";
 let searchTerm = "";
 
-//method is passed the file path, returns json format of the contents
+//method is passed the file path, returns json of the contents
 async function getProducts(productsPath) {
-    
   try {
     console.log("Fetching products...");
     const response = await fetch(productsPath);
@@ -56,12 +53,47 @@ function filterProducts(products){
         // filtered = filter products (where product => category is === to current selected category)
         products = products.filter(product => product.category === category);
     }
-
     //--------- Filter by flavour--------- 
+    if (flavour !== "all") {
+        products = products.filter(product => product.flavour === flavour);
+    }
     //--------- Filter by size--------- 
+    if (size !== "all") {
+        products = products.filter(product => product.size === size);
+    }
     //--------- Filter by price--------- 
+    switch (price) {
+        case "<10":
+            products = products.filter(product => Number(product.price) < 10);
+            break;
+        case "10-25":
+            products = products.filter(product => Number(product.price) >= 10 && Number(product.price) <=25);
+            break;
+        case "25-40":
+            products = products.filter(product => Number(product.price) >= 25 && Number(product.price) <=40);
+            break;
+        case ">40":
+            products = products.filter(product => Number(product.price) > 40);
+            break;                
+    }
     //--------- Filter by InStock--------- 
+    if (inStock) {
+        products = products.filter(product => product.inStock);
+    }
     //--------- Filter by search--------- 
+    const keyword = searchTerm.trim();
+
+    if (keyword !== "") {
+        //begin filter func. 
+        products = products.filter((product) => {
+            //get product name
+            // || "" checks for null values to prevent crash
+            const productName = (product.name || "").toLowerCase();
+
+            // return launch if product name includes the keyword
+            return productName.includes(keyword)
+        });
+    }
 
     return products;
 
@@ -88,7 +120,7 @@ function renderProducts(){
         const btnText = product.inStock ? "+ Add to Cart" : "Out of Stock";
 
         div.innerHTML = `
-        <div class="card" >
+        <div class="card " >
             <img src="${product.imageSmall}" class="card-img-top" alt="...">
             <div class="card-body">
                 ${product.inStock
@@ -103,8 +135,10 @@ function renderProducts(){
                 <h5 class="card-title fw-semi-bold">${product.name} - ${product.size}</h5>
                 <p class="card-text fw-light">${product.brand}</p>
                 <p class="card-text fw-light">${product.flavour}</p>
-                <p class="card-text fw-bold">&euro;${product.price}</p>
-                <button id="${product.id}" class="btn btn-primary m-1 addtocart ${disabled} ">${btnText}</button>
+                <div class="mt-auto">
+                    <p class="card-text fw-bold">&euro;${product.price}</p>
+                    <button id="${product.id}" class="btn btn-primary m-1 addtocart ${disabled} ">${btnText}</button>
+                </div>
             </div>
         </div>
         `
@@ -176,9 +210,8 @@ priceFilter.addEventListener("change", () => {
 });
 // when user changes inStock? filter
 inStockFilter.addEventListener("change", () => {
-    //update filter value
-    inStock = inStockFilter.value;
-    renderProducts();  // re-filter and re-render
+  inStock = inStockFilter.checked; // true or false
+  renderProducts();
 });
 // when user types in the search box
 searchInput.addEventListener("input", () => {

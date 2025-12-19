@@ -14,87 +14,108 @@
             Filters
         </button>
 
+
         {{!-- FILTERS --}}
         <div class="collapse" id="collapseExample">
-            <div class="filters row align-items-center m-3 p-3">
-                {{!-- Category filter --}}
-                <div class="col">
-                    <label>
-                        Category:
-                        <select id="categoryFilter">
-                            <option value="all">All</option>
-                            <option value="protein">Proteins</option>
-                            <option value="recovery">Recovery</option>
-                            <option value="pre-workout">Pre-workouts</option>
-                            <option value="snacks">Snacks</option>
-                            <option value="accessories">Accessories</option>
-                        </select>
-                    </label>
+            <div class="container-fluid px-3 px-md-5">
+                <div class="card shadow-sm border-1 mb-4">
+                    <div class="card-body">
+
+                        <hr class="border border-danger border-2 opacity-100 my-2">
+
+                        <div class="row g-3 align-items-end">
+
+                            {{!-- Category filter --}}
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                                <label for="categoryFilter" class="form-label small text-muted mb-1">Category</label>
+                                <select id="categoryFilter" class="form-select form-select-sm">
+                                    <option value="all">All</option>
+                                    <option value="protein">Proteins</option>
+                                    <option value="recovery">Recovery</option>
+                                    <option value="pre-workout">Pre-workouts</option>
+                                    <option value="snacks">Snacks</option>
+                                    <option value="accessories">Accessories</option>
+                                </select>
+                            </div>
+
+                            {{!-- Flavour filter --}}
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                                <label for="flavourFilter" class="form-label small text-muted mb-1">Flavour</label>
+                                <select id="flavourFilter" class="form-select form-select-sm">
+                                    <option value="all">All</option>
+                                    <option value="Unflavoured">Unflavoured</option>
+                                    <option value="Chocolate">Chocolate</option>
+                                    <option value="Peanut Butter">Peanut Butter</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Strawberry">Strawberry</option>
+                                    <option value="Fruit Punch">Fruit Punch</option>
+                                    <option value="Blue Raspberry">Blue Raspberry</option>
+                                </select>
+                            </div>
+
+                            {{!-- Size filter --}}
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                                <label for="sizeFilter" class="form-label small text-muted mb-1">Size</label>
+                                <select id="sizeFilter" class="form-select form-select-sm">
+                                    <option value="all">All</option>
+                                    <option value="2kg">2kg</option>
+                                    <option value="1kg">1kg</option>
+                                    <option value="500g">500g</option>
+                                    <option value="300g">300g</option>
+                                    <option value="12 x 60g">12 x 60g</option>
+                                    <option value="700ml">700ml</option>
+                                </select>
+                            </div>
+
+                            {{!-- Price filter --}}
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                                <label for="priceFilter" class="form-label small text-muted mb-1">Price</label>
+                                <select id="priceFilter" class="form-select form-select-sm">
+                                    <option value="all">All</option>
+                                    <option value="<10">Under €10</option>
+                                    <option value="10-25">€10 – €25</option>
+                                    <option value="25-40">€25-€40</option>
+                                    <option value=">40">€40+</option>
+                                </select>
+                            </div>
+
+                            {{!-- In Stock filter --}}
+                            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                                <label class="form-label small text-muted mb-1 d-block">Stock</label>
+
+                                <div class="form-check mt-1">
+                                    <input class="form-check-input" type="checkbox" id="inStockFilter">
+                                    <label class="form-check-label small" for="inStockFilter">
+                                        In stock only
+                                    </label>
+                                </div>
+                            </div>
+
+                            {{!-- Search --}}
+                            <div class="col-12 col-sm-6 col-lg-8 col-xl-2">
+                                <label for="searchInput" class="form-label small text-muted mb-1">Search</label>
+                                <input id="searchInput" type="text" class="form-control form-control-sm"
+                                    placeholder="Search product...">
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
-
-                {{!-- Favour filter --}}
-                <div class="col">
-                    <label>Flavour:
-                        <select id="flavourFilter">
-                            <option value="all">All</option>
-                        </select>
-                    </label>
-                </div>
-
-                {{!-- Size filter --}}
-                <div class="col">
-                    <label>Size:
-                        <select id="sizeFilter">
-                            <option value="all">All</option>
-                        </select>
-                    </label>
-                </div>
-
-                {{!-- Price filter --}}
-                <div class="col">
-
-                    <label>Price:
-                        <select id="priceFilter">
-                            <option value="all">All</option>
-                            <option value="<10">Under €10</option>
-                            <option value="10-25">€10 – €25</option>
-                            <option value=">25">€25+</option>
-                        </select>
-                    </label>
-                </div>
-
-                {{!-- InStock filter --}}
-                {{!-- MAKE CHECKBOX --}}
-                <div class="col">
-                    <label>In Stock:
-                        <select id="inStockFilter">
-                            <option value="all">All</option>
-                            <option value="inStock">In Stock</option>
-                        </select>
-                    </label>
-                </div>
-
-                <!-- Search box filter -->
-                <div class="col">
-                    <label>
-                        Search:
-                        <input id="searchInput" type="text" placeholder="Search product name" />
-                    </label>
-                </div>
-
             </div>
         </div>
+    </div>
 
-        <p id="statusText">Data not loaded yet.</p>
-        <div id="outOfStockAlert" class="alert alert-danger d-none" role="alert">
-            Sorry, this item is currently out of stock!
-        </div>
+    <p id="statusText">Data not loaded yet.</p>
+    <div id="outOfStockAlert" class="alert alert-danger d-none" role="alert">
+        Sorry, this item is currently out of stock!
+    </div>
 
-        {{!-- PRODUCTS LIST --}}
-        <div class="row g-5 p-0 mx-0 p-md-3 mx-md-3" id="productList">
-            {{!-- in here add cards inside col classes --}}
+    {{!-- PRODUCTS LIST --}}
+    <div class="row g-5 p-0 mx-0 p-md-3 mx-md-3" id="productList">
+        {{!-- in here add cards inside col classes --}}
 
-        </div>
+    </div>
 
     </div>
 

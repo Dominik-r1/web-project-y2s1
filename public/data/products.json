@@ -26,7 +26,8 @@
     "category": "protein",
     "caloriesPerServing": 120,
     "price": 44.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": false
   },
   {
     "id": 3,
@@ -40,7 +41,8 @@
     "category": "protein",
     "caloriesPerServing": 120,
     "price": 24.99,
-    "inStock": false
+    "inStock": false,
+    "bestseller": false
   },
   {
     "id": 4,
@@ -54,7 +56,8 @@
     "category": "protein",
     "caloriesPerServing": 120,
     "price": 44.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": false
   },
   {
     "id": 5,
@@ -68,7 +71,8 @@
     "category": "protein",
     "caloriesPerServing": 120,
     "price": 24.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": false
   },
   {
     "id": 6,
@@ -82,7 +86,8 @@
     "category": "protein",
     "caloriesPerServing": 120,
     "price": 44.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": true
   },
   {
     "id": 7,
@@ -96,7 +101,8 @@
     "category": "recovery",
     "caloriesPerServing": 0,
     "price": 14.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": true
   },
   {
     "id": 8,
@@ -110,7 +116,8 @@
     "category": "recovery",
     "caloriesPerServing": 0,
     "price": 19.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": false
   },
   {
     "id": 9,
@@ -124,7 +131,8 @@
     "category": "pre-workout",
     "caloriesPerServing": 10,
     "price": 29.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": true
   },
   {
     "id": 10,
@@ -138,7 +146,8 @@
     "category": "pre-workout",
     "caloriesPerServing": 10,
     "price": 29.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": false
   },
   {
     "id": 11,
@@ -152,7 +161,8 @@
     "category": "snacks",
     "caloriesPerServing": 220,
     "price": 24.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": false
   },
   {
     "id": 12,
@@ -166,7 +176,8 @@
     "category": "snacks",
     "caloriesPerServing": 230,
     "price": 24.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": true
   },
   {
     "id": 13,
@@ -180,7 +191,8 @@
     "category": "accessories",
     "caloriesPerServing": 0,
     "price": 6.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": false
   },
   {
     "id": 14,
@@ -194,7 +206,8 @@
     "category": "accessories",
     "caloriesPerServing": 0,
     "price": 6.99,
-    "inStock": true
+    "inStock": true,
+    "bestseller": false
   }
 
 ]

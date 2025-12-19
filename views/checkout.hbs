@@ -4,7 +4,7 @@
         <div class="row mb-2 align-items-center">
             <div class="col d-flex justify-content-between align-items-center">
                 <h2 class="m-4 colour_tab mb-0">Checkout</h2>
-                <a href="/cart" class="btn btn-outline-danger me-4">Back to Cart</a>
+                <a href="/cart" class="btn btn-outline-primary me-4">Back to Cart</a>
             </div>
         </div>
 
@@ -17,7 +17,7 @@
             <div class="col-12 col-lg-7">
                 {{!-- BILLING DETAILS --}}
                 <div class="card p-3 mb-4">
-                    <h5 class="mb-3">Billing Details</h5>
+                    <h5 class="mb-3">1. Billing Details</h5>
 
                     <form id="checkoutForm">
                         <div class="row g-3">
@@ -37,22 +37,63 @@
                             </div>
 
                             <div class="col-12">
-                                <label class="form-label">Address line 1 <span class="text-danger">*</span></label>
-                                <input class="form-control" id="address1" name="address1" required>
+                                <label class="form-label">Phone Number <span class="text-danger">*</span></label>
+                                <input class="form-control" id="phone" name="email" required>
                             </div>
-                            <div class="col-12">
-                                <label class="form-label">Address line 2</label>
-                                <input class="form-control" id="address2" name="address2" placeholder="optional">
+
+                            <div class="col-12 col-md-6">
+                                <label class="form-label ">County <span class="text-danger">*</span></label>
+                                <select class="form-select" aria-label="Default select example" id="county" name="county" required>
+                                    <option selected>County</option>
+                                    <option value="Carlow">Carlow</option>
+                                    <option value="Cavan">Cavan</option>
+                                    <option value="Clare">Clare</option>
+                                    <option value="Cork">Cork</option>
+                                    <option value="Donegal">Donegal</option>
+                                    <option value="Dublin">Dublin</option>
+                                    <option value="Galway">Galway</option>
+                                    <option value="Kerry">Kerry</option>
+                                    <option value="Kildare">Kildare</option>
+                                    <option value="Kilkenny">Kilkenny</option>
+                                    <option value="Laois">Laois</option>
+                                    <option value="Leitrim">Leitrim</option>
+                                    <option value="Limerick">Limerick</option>
+                                    <option value="Longford">Longford</option>
+                                    <option value="Louth">Louth</option>
+                                    <option value="Mayo">Mayo</option>
+                                    <option value="Monaghan">Monaghan</option>
+                                    <option value="Offaly">Offaly</option>
+                                    <option value="Roscommon">Roscommon</option>
+                                    <option value="Sligo">Sligo</option>
+                                    <option value="Tipperary">Tipperary</option>
+                                    <option value="Waterford">Waterford</option>
+                                    <option value="Westmeath">Westmeath</option>
+                                    <option value="Wexford">Wexford</option>
+                                    <option value="Wicklow">Wicklow</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12 col-md-6">
+                                <label class="form-label">Country</label>
+                                <input class="form-control" id="country" name="country" value="IRELAND" required>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <label class="form-label">City <span class="text-danger">*</span></label>
                                 <input class="form-control" id="city" name="city" required>
                             </div>
-
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Eircode</label>
                                 <input class="form-control" id="eircode" name="eircode" placeholder="optional">
+                            </div>
+                            
+                            <div class="col-12">
+                                <label class="form-label">Address line 1 <span class="text-danger">*</span></label>
+                                <input class="form-control" id="address1" name="address1" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Address line 2</label>
+                                <input class="form-control" id="address2" name="address2" placeholder="optional">
                             </div>
 
                             <div class="col-12">
@@ -65,41 +106,38 @@
 
                 {{!-- CARD DETAILS --}}
                 <div class="card p-3 my-2">
-                    <h5 class="mb-3">Card Details <span class="text-danger">*</span></h5>
+                    <h5 class="mb-3">2. Payment Details</h5>
 
                     <div class="row g-3">
                         <div class="col-12">
                             <label class="form-label">Card Number <span class="text-danger">*</span></label>
-                            <input class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" required
+                            <input class="form-control" placeholder="1234 5678 9012 3456"  value="1234 5678 9012 3456" maxlength="19" required
                                 form="checkoutForm">
                         </div>
 
                         <div class="col-6 col-md-4">
                             <label class="form-label">Expiry <span class="text-danger">*</span></label>
-                            <input class="form-control" placeholder="MM/YY" maxlength="5" required form="checkoutForm">
+                            <input class="form-control" placeholder="MM/YY" value="01/29" maxlength="5" required form="checkoutForm">
                         </div>
 
                         <div class="col-6 col-md-4">
                             <label class="form-label">CVC <span class="text-danger">*</span></label>
-                            <input class="form-control" placeholder="123" maxlength="4" required form="checkoutForm">
+                            <input class="form-control" placeholder="123" value="545" maxlength="4" required form="checkoutForm">
                         </div>
 
                         <div class="col-12 col-md-4">
                             <label class="form-label">Name on Card <span class="text-danger">*</span></label>
-                            <input class="form-control" placeholder="Full name" required form="checkoutForm">
+                            <input class="form-control" placeholder="Full name" value="James" required form="checkoutForm">
                         </div>
                     </div>
 
-                    <small class="text-muted mt-3 d-block">
-                        *Demo only — no real payment is processed.
-                    </small>
                 </div>
             </div>
 
             {{!-- SUMMARY --}}
             <div class="col-12 col-lg-5">
                 <div class="card p-3 mb-5">
-                    <h5 class="mb-3">Order Summary</h5>
+                    <h5 class="mb-3">3. Order Summary</h5>
 
                     {{!-- Filled in with JS --}}
                     <div id="orderItems" class="mb-3"></div>

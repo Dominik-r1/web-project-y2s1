@@ -60,4 +60,7 @@
     --bs-btn-active-bg: red;
     --bs-btn-active-border-color: red;
 }
+.border-primary{
+    border-color: red;
+}
 

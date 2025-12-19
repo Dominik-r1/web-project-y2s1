@@ -10,7 +10,7 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-//get cart, 
+//add item to cart
 function addToCart(product) {
   const cart = getCart();
 

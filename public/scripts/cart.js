@@ -3,16 +3,27 @@ const productsPath = '/data/products.json'
 //vars
 var cart = getCart() || []; // function in shop.js
 
+function IsCartEmpty(){
+    return (cart.length == 0 || null)
+}
+
+
 console.log('cart:', cart);
 
-const message = document.getElementById('emptyMessage');
+const message = document.getElementById('emptyMessage')
+const proceedBtn = document.getElementById('checkoutBtn')
 
 function updateEmptyCartMessage(){
-    cart.length == 0 || null
-    ? message.classList.remove('d-none')
-    : message.classList.add('d-none');
-
+    if (IsCartEmpty()){
+        message.classList.remove('d-none')
+        proceedBtn.disabled = true;
+    }
+    else{
+        message.classList.add('d-none');
+        proceedBtn.disabled = false;
+    }
 }
+
 function updateCartTotal() {
   let total = 0;
 
@@ -104,26 +115,34 @@ emptyCartBtn.addEventListener("click", () => {
   updateCartTotal()
 });
 
+//event listener for checkout btn
 const checkoutBtn = document.getElementById("checkoutBtn");
 
 checkoutBtn.addEventListener("click", () => {
-    event.preventDefault();
+    
 
-    //check if logged in
-    var loggedin=localStorage.getItem('loggedIn'); 
+    //if cart isnt empty, proceed
+    if (!IsCartEmpty()) {
+        console.log("cart not emoty yay")
 
-    // if user is logged in 
-    if (loggedin==1) {
-        //bring to user details page
-        window.location.href = "checkout";
-    } 
-    else {
-        //set redirect page to checkout page so that when logged in it will redirect there
-        localStorage.setItem('redirectAfterLogin', window.location.href = "checkout");
+        //check if logged in
+        var loggedin = localStorage.getItem('loggedIn');
 
-        //redirect to log in
-        window.location.href = "login";
-    }   
+        // if user is logged in 
+        if (loggedin == 1) {
+            //bring to user details page
+            window.location.href = "checkout";
+        }
+        else {
+            //set redirect page to checkout page so that when logged in it will redirect there
+            localStorage.setItem("redirectAfterLogin", "checkout");
+            
+            //redirect to log in
+            window.location.href = "login";
+        }
+
+    }
+
 
 });
 
