@@ -135,6 +135,7 @@ function renderProducts(){
                 <h5 class="card-title fw-semi-bold">${product.name} - ${product.size}</h5>
                 <p class="card-text fw-light">${product.brand}</p>
                 <p class="card-text fw-light">${product.flavour}</p>
+                <p class="card-text fw-lighter">${product.description}</p>
                 <div class="mt-auto">
                     <p class="card-text fw-bold">&euro;${product.price}</p>
                     <button id="${product.id}" class="btn btn-primary m-1 addtocart ${disabled} ">${btnText}</button>
@@ -152,13 +153,6 @@ function renderProducts(){
     }
 
 }
-
-function disableOuOfStock (){
-    let 
-}
-
-
-
 
 //////////////////////////////////////////////////
 //EVENT LISTENERS FOR ADD_TO_CART (evenbt delagation)
@@ -219,41 +213,3 @@ searchInput.addEventListener("input", () => {
     searchTerm = searchInput.value.toLowerCase();
     renderProducts();  // re-filter and re-render
 });
-
-
-//OLD CODE
-// //IIFE
-// //////////////////////////////////////////////////
-// (async function start() {
-
-//     try {
-
-//         console.log("Fetching products...");
-//         products = await fetchJSON(productsPath);
-
-//         console.log(products);
-//         console.log(products[0]);
-
-//         renderProducts();
-
-//     } catch (err) {
-//         console.error('Error fetching data:', err);
-//         statusText.textContent = "Unable to fetch data at this time."
-//     }
-// })();
-
-// // FETCH DATA FROM JSON FILE
-// //////////////////////////////////////////////////
-// async function fetchJSON(path) {
-//     //get data
-//     let response = await fetch(path);
-
-//     //chekc for error
-//     if (!response.ok) {
-//         throw new Error("HTTP error: " + response.status);
-//     }
-
-//     //return data
-//     return await response.json();
-// };
-// ////////////////////////////////////////////////////////////////////////////////////////////////////

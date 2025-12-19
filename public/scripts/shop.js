@@ -23,22 +23,22 @@ function addToCart(product) {
     existing.qty += 1;
   }
   //else use array method .push to add item to the cart (array of objects)
-   else {
-      cart.push({
-          id: product.id,
-          name: product.name,
-          brand: product.brand,
-          description: product.description,
-          imageSmall: product.imageSmall,
-          size: product.size,
-          flavour: product.flavour,
-          caloriesPerServing: product.caloriesPerServing,
-          price: product.price,
-          inStock: product.inStock,
-          bestseller: product.bestseller,
-          qty: 1,
+  else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      brand: product.brand,
+      description: product.description,
+      imageSmall: product.imageSmall,
+      size: product.size,
+      flavour: product.flavour,
+      caloriesPerServing: product.caloriesPerServing,
+      price: product.price,
+      inStock: product.inStock,
+      bestseller: product.bestseller,
+      qty: 1,
 
-      });
+    });
   }
 
   //update cart qty figure

@@ -1,4 +1,0 @@
-breakpoints:
-sm -
-md - 
-lg - 

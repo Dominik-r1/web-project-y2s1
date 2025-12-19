@@ -57,7 +57,7 @@ function renderSummary() {
 
 function fillOrderDetails() {
   // Order number - random (current date and time)
-  orderNumberText.textContent = `ORD-${Date.now()}`;
+  orderNumberText.textContent = `ORD-645434`;
 
   // Delivery estimate
   deliveryEstimateText.textContent = "2–4 working days";
